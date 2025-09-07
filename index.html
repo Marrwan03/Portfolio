@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwan Al-Awlaqi | .NET Desktop Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+        :root {
+            --light-bg: #DCD9DE;
+            --dark-text: #3F3433;
+            --accent-primary: #8A5A7A;
+            --accent-secondary: #A68A8A;
+            --accent-teal: #7A9EB1;
+            --accent-pink: #C46D82;
+            --transition: all 0.3s ease;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --shadow: 0 10px 30px rgba(63, 52, 51, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(138, 90, 122, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(166, 138, 138, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(122, 158, 177, 0.1) 0%, transparent 25%);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .section-title h2:hover {
+            transform: translateY(-3px);
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-teal));
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .section-title h2:hover::after {
+            width: 100px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-teal));
+            color: white;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(138, 90, 122, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(63, 52, 51, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-teal));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-text);
+        }
+
+        /* Hero Section - Updated for Slider */
+        .hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(220, 217, 222, 0.9));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 90, 122, 0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite linear;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-slider {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            width: 280px;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 20px;
+            overflow: hidden;
+            transform: scale(1.05);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 4px solid rgba(138, 90, 122, 0.3);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-radius: 20px;
+        }
+
+        .profile-slider::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-teal), var(--accent-pink)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: rotate 10s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .slider-controls {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            display: none; /* Hide the dots */
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(138, 90, 122, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: var(--accent-primary);
+            transform: scale(1.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-teal);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .about-text h3:hover {
+            transform: translateX(10px);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(63, 52, 51, 0.15);
+            border-color: var(--accent-primary);
+        }
+
+        .info-item i {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+
+        .info-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-item p {
+            opacity: 0.7;
+            margin-bottom: 0;
+        }
+
+        .platform-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .platform-link:hover {
+            color: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(63, 52, 51, 0.15);
+            border-color: var(--accent-secondary);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-teal);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .skill-category h3:hover {
+            transform: translateX(10px);
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-percentage {
+            color: var(--accent-secondary);
+            font-weight: 600;
+        }
+
+        .skill-progress {
+            height: 8px;
+            background: rgba(63, 52, 51, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-teal));
+            border-radius: 4px;
+            position: relative;
+            transition: width 1.5s ease-in-out;
+            width: 0;
+        }
+
+        .skill-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(63, 52, 51, 0.15);
+            border-color: var(--accent-primary);
+        }
+
+        .project-header {
+            padding: 1.5rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-teal));
+            color: white;
+        }
+
+        .project-header h3 {
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .project-header h3:hover {
+            transform: translateX(10px);
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-body h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-teal);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-body p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .project-features i {
+            color: var(--accent-primary);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background: rgba(138, 90, 122, 0.1);
+        }
+
+        .project-links a:hover {
+            background: rgba(138, 90, 122, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--accent-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .contact-info h3:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(63, 52, 51, 0.05);
+            border-radius: 50%;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 10000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .profile-slider {
+                width: 220px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(63, 52, 51, 0.1);
+                text-align: center;
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-slider {
+                width: 180px;
+                height: 230px;
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+            }
+            
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#about" class="logo"><i class="ti ti-code"></i> Marwan Al-Awlaqi</a>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="ti ti-home"></i> Home</a></li>
+                <li><a href="#about"><i class="ti ti-user"></i> About</a></li>
+                <li><a href="#skills"><i class="ti ti-tools"></i> Skills</a></li>
+                <li><a href="#projects"><i class="ti ti-apps"></i> Projects</a></li>
+                <li><a href="#contact"><i class="ti ti-mail"></i> Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Image Slider -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="profile-slider">
+                <div class="slide active">
+                    <img src="https://drive.google.com/thumbnail?id=1cQy9HhT9Qfu4I48EGZIqV_68t57dlYd9&sz=w1000" alt="Marwan Al-Awlaqi - Professional Photo 1" class="hero-img">
+                </div>
+                <div class="slide">
+                    <img src="https://drive.google.com/thumbnail?id=1cT-XXLKLYihDtXHu1WkXDCY3EGfYCiGH&sz=w1000" alt="Marwan Al-Awlaqi - Professional Photo 2" class="hero-img">
+                </div>
+            </div>
+            
+            <h1>Marwan Al-Awlaqi</h1>
+            <p>Full-Stack Desktop Application Developer specializing in .NET Framework, C#, and SQL Server</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn"><i class="ti ti-apps"></i> View Projects</a>
+                <a href="https://drive.google.com/uc?export=download&id=1X1jd49r5MQUdNyGN_a_6-HltGzzYQZEN" class="btn btn-outline" download>
+                    <i class="ti ti-download"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="ti ti-user"></i> About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3><i class="ti ti-hand-stop"></i> Hello, I'm Marwan</h3>
+                    <p>A passionate Full-Stack Desktop Application Developer specializing in .NET Framework, C#, and SQL Server. Focused on building robust database architectures and user-friendly solutions with strong attention to code quality and maintainability.</p>
+                    <p>I have a great passion for learning new technologies and always work on developing my skills to keep up with the latest trends in software development.</p>
+                    <a href="#contact" class="btn"><i class="ti ti-mail"></i> Get In Touch</a>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="ti ti-award"></i>
+                        <h4>2+ Years</h4>
+                        <p>Coding Experience</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="ti ti-stack"></i>
+                        <h4>18+ Projects</h4>
+                        <p>Completed</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="ti ti-certificate"></i>
+                        <h4>26+ Courses</h4>
+                        <p>Completed</p>
+                        <a href="https://programmingadvices.com/" target="_blank" class="platform-link">
+                            <i class="ti ti-external-link"></i> Programming Advices
+                        </a>
+                    </div>
+                    <div class="info-item">
+                        <i class="ti ti-brain"></i>
+                        <h4>Active Learner</h4>
+                        <p>Always Improving</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding" style="background-color: rgba(255, 255, 255, 0.5);">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="ti ti-tools"></i> Technical Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="ti ti-code"></i> Programming Languages</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-brand-csharp"></i> C#</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-brand-cpp"></i> C++</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-database"></i> T-SQL</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="85"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="ti ti-layer"></i> Frameworks & Technologies</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-brand-net"></i> .NET Framework</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-database-export"></i> ADO.NET</span>
+                            <span class="skill-percentage">82%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="82"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-window"></i> WinForms</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-api"></i> RESTful API</span>
+                            <span class="skill-percentage">78%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="78"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="ti ti-database"></i> Database Management</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-server"></i> SQL Server</span>
+                            <span class="skill-percentage">87%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="87"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-vector-triangle"></i> Database Design</span>
+                            <span class="skill-percentage">83%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="83"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-copy"></i> Backup Systems</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="80"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="ti ti-settings"></i> Services & Practices</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-brand-windows"></i> Windows Services</span>
+                            <span class="skill-percentage">79%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="79"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-file-search"></i> File Monitoring</span>
+                            <span class="skill-percentage">81%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="81"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-refresh"></i> Automated Backup</span>
+                            <span class="skill-percentage">84%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="84"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-layers-linked"></i> 3-Tier Architecture</span>
+                            <span class="skill-percentage">86%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="86"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="ti ti-apps"></i> Featured Projects</h2>
+            </div>
+            <div class="projects-container">
+                <!-- Project 1 - DVLD -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="ti ti-license"></i> Driving & Vehicle License Department (DVLD)</h3>
+                        <p>12/2024 – 08/2025</p>
+                    </div>
+                    <div class="project-body">
+                        <p>A comprehensive desktop application for managing local and international driving licenses with modern UI and complete operational management.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check"></i> User/Employee dashboards</li>
+                            <li><i class="fas fa-check"></i> Banking system integration</li>
+                            <li><i class="fas fa-check"></i> International license processing</li>
+                            <li><i class="fas fa-check"></i> Driving test simulations</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://youtu.be/uLdCdyXtdwI?feature=shared" target="_blank"><i class="fab fa-youtube"></i> Demo</a>
+                            <a href="https://github.com/Marrwan03/DVLD-Version1.1" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 - Backup Service -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="ti ti-copy"></i> Database Backup Service</h3>
+                        <p>06/2024 – 08/2024</p>
+                    </div>
+                    <div class="project-body">
+                        <p>A Windows service application for automated database backup with scheduling, compression, and email notification features.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check"></i> Automated backup scheduling</li>
+                            <li><i class="fas fa-check"></i> Backup compression</li>
+                            <li><i class="fas fa-check"></i> Email notifications</li>
+                            <li><i class="fas fa-check"></i> Backup history tracking</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://youtu.be/Iwdep2kdi0s?feature=shared" target="_blank"><i class="fab fa-youtube"></i> Demo</a>
+                            <a href="https://github.com/Marrwan03/Database-Backup" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 - File Monitoring -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="ti ti-file-search"></i> File Monitoring Windows Service</h3>
+                        <p>04/2024 – 06/2024</p>
+                    </div>
+                    <div class="project-body">
+                        <p>A Windows service that monitors specific directories for file changes and triggers automated processes based on file events.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check"></i> Real-time file monitoring</li>
+                            <li><i class="fas fa-check"></i> Custom event triggers</li>
+                            <li><i class="fas fa-check"></i> Logging and reporting</li>
+                            <li><i class="fas fa-check"></i> Configurable directories</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://youtu.be/QLLA7U1FuvA?feature=shared" target="_blank"><i class="fab fa-youtube"></i> Demo</a>
+                            <a href="https://github.com/Marrwan03/File-Monitoring-Windows-Service" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding" style="background-color: rgba(255, 255, 255, 0.5);">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="ti ti-mail"></i> Contact Information</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3><i class="ti ti-info-circle"></i> Get In Touch</h3>
+                    <div class="contact-details">
+                        <p><i class="ti ti-mail"></i> Email: marwanalawlaki2@gmail.com</p>
+                        <p><i class="ti ti-phone"></i> Phone: +966 50 765 2943</p>
+                        <p><i class="ti ti-map-pin"></i> Location: Najran, Saudi Arabia</p>
+                        <p><i class="ti ti-flag"></i> Nationality: Yemeni</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/marwan-alawlaqi-0890192b5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com/@marwanal-awlaki?feature=shared" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://github.com/Marrwan03" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Marwan Al-Awlaqi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.querySelector('i').classList.toggle('fa-bars');
+            menuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuBtn.querySelector('i').classList.add('fa-bars');
+                        menuBtn.querySelector('i').classList.remove('fa-times');
+                    }
+                }
+            });
+        });
+        
+        // Profile image slider
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Auto-advance slides every 5 seconds
+        setInterval(nextSlide, 5000);
+        
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress-bar');
+        
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                const isInViewport = rect.top <= (window.innerHeight || document.documentElement.clientHeight) && 
+                                    rect.bottom >= 0;
+                
+                if (isInViewport && !bar.classList.contains('animated')) {
+                    const percentage = bar.getAttribute('data-percentage');
+                    bar.style.width = percentage + '%';
+                    bar.classList.add('animated');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateSkillBars);
+        window.addEventListener('load', animateSkillBars);
+    </script>
+</body>
+</html>
