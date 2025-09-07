@@ -21,13 +21,16 @@
             --nav-bg: rgba(255, 255, 255, 0.95);
         }
 
-        /* Dark Mode Variables */
+        /* Dark Mode Variables - IMPROVED */
         [data-theme="dark"] {
-            --light-bg: #2A2438;
+            --light-bg: #1E1B26;
             --dark-text: #F0E6EF;
-            --card-bg: rgba(49, 43, 68, 0.8);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --nav-bg: rgba(49, 43, 68, 0.95);
+            --card-bg: rgba(39, 35, 51, 0.95);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            --nav-bg: rgba(39, 35, 51, 0.98);
+            --accent-primary: #B87BA0;
+            --accent-secondary: #C8A8A8;
+            --accent-teal: #8CB4CC;
         }
 
         * {
@@ -51,9 +54,9 @@
 
         [data-theme="dark"] body {
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(138, 90, 122, 0.2) 0%, transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(166, 138, 138, 0.2) 0%, transparent 25%),
-                radial-gradient(circle at 50% 80%, rgba(122, 158, 177, 0.2) 0%, transparent 25%);
+                radial-gradient(circle at 15% 50%, rgba(184, 123, 160, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(200, 168, 168, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(140, 180, 204, 0.15) 0%, transparent 25%);
         }
 
         a {
@@ -142,7 +145,7 @@
             color: white;
         }
 
-        /* Navigation */
+        /* Navigation - IMPROVED FOR DARK MODE */
         nav {
             background-color: var(--nav-bg);
             box-shadow: 0 2px 10px rgba(63, 52, 51, 0.1);
@@ -153,6 +156,10 @@
             padding: 1rem 0;
             backdrop-filter: blur(10px);
             transition: background-color 0.3s ease;
+        }
+
+        [data-theme="dark"] nav {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container {
@@ -189,6 +196,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: var(--dark-text) !important; /* Force text color */
         }
 
         .nav-links a::after {
@@ -239,7 +247,7 @@
         }
 
         [data-theme="dark"] .hero {
-            background: linear-gradient(135deg, rgba(49, 43, 68, 0.9), rgba(42, 36, 56, 0.9));
+            background: linear-gradient(135deg, rgba(39, 35, 51, 0.9), rgba(30, 27, 38, 0.9));
         }
 
         .hero::before {
@@ -254,7 +262,7 @@
         }
 
         [data-theme="dark"] .hero::before {
-            background: radial-gradient(circle, rgba(138, 90, 122, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(184, 123, 160, 0.15) 0%, transparent 70%);
         }
 
         @keyframes pulse {
@@ -310,6 +318,10 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-radius: 20px;
+        }
+
+        [data-theme="dark"] .hero-img {
+            border: 4px solid rgba(184, 123, 160, 0.4);
         }
 
         .profile-slider::before {
@@ -371,6 +383,7 @@
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            color: var(--dark-text);
         }
 
         .hero-buttons {
@@ -406,6 +419,7 @@
         .about-text p {
             margin-bottom: 1.5rem;
             opacity: 0.8;
+            color: var(--dark-text);
         }
 
         .info-grid {
@@ -423,6 +437,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
+            color: var(--dark-text);
         }
 
         .info-item:hover {
@@ -435,6 +450,10 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        [data-theme="dark"] .info-item:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
         .info-item i {
             font-size: 2.5rem;
             color: var(--accent-primary);
@@ -444,11 +463,13 @@
         .info-item h4 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            color: var(--dark-text);
         }
 
         .info-item p {
             opacity: 0.7;
             margin-bottom: 0;
+            color: var(--dark-text);
         }
 
         .platform-link {
@@ -482,6 +503,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
+            color: var(--dark-text);
         }
 
         [data-theme="dark"] .skill-category {
@@ -492,6 +514,10 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(63, 52, 51, 0.15);
             border-color: var(--accent-secondary);
+        }
+
+        [data-theme="dark"] .skill-category:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .skill-category h3 {
@@ -523,6 +549,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: var(--dark-text);
         }
 
         .skill-percentage {
@@ -585,6 +612,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
+            color: var(--dark-text);
         }
 
         [data-theme="dark"] .project-card {
@@ -595,6 +623,10 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(63, 52, 51, 0.15);
             border-color: var(--accent-primary);
+        }
+
+        [data-theme="dark"] .project-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .project-header {
@@ -627,6 +659,7 @@
         .project-body p {
             opacity: 0.8;
             margin-bottom: 1.5rem;
+            color: var(--dark-text);
         }
 
         .project-features {
@@ -639,6 +672,7 @@
             align-items: center;
             gap: 0.5rem;
             opacity: 0.9;
+            color: var(--dark-text);
         }
 
         .project-features i {
@@ -667,6 +701,14 @@
             transform: translateY(-2px);
         }
 
+        [data-theme="dark"] .project-links a {
+            background: rgba(184, 123, 160, 0.15);
+        }
+
+        [data-theme="dark"] .project-links a:hover {
+            background: rgba(184, 123, 160, 0.25);
+        }
+
         .more-projects {
             text-align: center;
             margin-top: 3rem;
@@ -676,6 +718,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
+            color: var(--dark-text);
         }
 
         [data-theme="dark"] .more-projects {
@@ -690,6 +733,7 @@
         .more-projects p {
             margin-bottom: 1.5rem;
             opacity: 0.8;
+            color: var(--dark-text);
         }
 
         .more-projects-links {
@@ -730,6 +774,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
+            color: var(--dark-text);
         }
 
         [data-theme="dark"] .contact-info {
@@ -764,6 +809,7 @@
             gap: 1rem;
             opacity: 0.9;
             font-size: 1.1rem;
+            color: var(--dark-text);
         }
 
         .social-links {
@@ -784,6 +830,7 @@
             transition: var(--transition);
             box-shadow: var(--shadow);
             font-size: 1.5rem;
+            color: var(--dark-text);
         }
 
         [data-theme="dark"] .social-links a {
@@ -803,6 +850,7 @@
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
+            color: var(--dark-text);
         }
 
         [data-theme="dark"] footer {
@@ -828,6 +876,18 @@
         .toast.show {
             transform: translateY(0);
             opacity: 1;
+        }
+
+        /* Force text visibility in dark mode */
+        [data-theme="dark"] .nav-links a,
+        [data-theme="dark"] .about-text p,
+        [data-theme="dark"] .info-item,
+        [data-theme="dark"] .skill-category,
+        [data-theme="dark"] .project-body p,
+        [data-theme="dark"] .project-features li,
+        [data-theme="dark"] .more-projects p,
+        [data-theme="dark"] .contact-details p {
+            color: var(--dark-text) !important;
         }
 
         /* Responsive Design */
@@ -861,6 +921,10 @@
                 text-align: center;
                 backdrop-filter: blur(10px);
                 z-index: 999;
+            }
+            
+            [data-theme="dark"] .nav-links {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
             }
             
             .nav-links.active {
@@ -1000,108 +1064,101 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section-padding" style="background-color: rgba(255, 255, 255, 0.5);">
+    <section id="skills" class="section-padding" style="background: rgba(255, 255, 255, 0.05);">
         <div class="container">
             <div class="section-title">
-                <h2><i class="ti ti-tools"></i> Technical Skills</h2>
+                <h2><i class="ti ti-tools"></i> My Skills</h2>
             </div>
             <div class="skills-container">
                 <div class="skill-category">
                     <h3><i class="ti ti-code"></i> Programming Languages</h3>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-brand-csharp"></i> C#</span>
+                            <span class="skill-name"><i class="ti ti-brand-c-sharp"></i> C#</span>
                             <span class="skill-percentage">90%</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="90"></div>
+                            <div class="skill-progress-bar" data-width="90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-brand-cpp"></i> C++</span>
-                            <span class="skill-percentage">75%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="75"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-database"></i> T-SQL</span>
+                            <span class="skill-name"><i class="ti ti-database"></i> SQL</span>
                             <span class="skill-percentage">85%</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="85"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="ti ti-layer"></i> Frameworks & Technologies</h3>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-brand-net"></i> .NET Framework</span>
-                            <span class="skill-percentage">88%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="88"></div>
+                            <div class="skill-progress-bar" data-width="85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-database-export"></i> ADO.NET</span>
-                            <span class="skill-percentage">82%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="82"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-window"></i> WinForms</span>
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-api"></i> RESTful API</span>
-                            <span class="skill-percentage">78%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="78"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="ti ti-server"></i> Database & Tools</h3>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-brand-microsoft"></i> SQL Server</span>
-                            <span class="skill-percentage">87%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="87"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-tool"></i> Git & GitHub</span>
+                            <span class="skill-name"><i class="ti ti-brand-html5"></i> HTML/CSS</span>
                             <span class="skill-percentage">80%</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="80"></div>
+                            <div class="skill-progress-bar" data-width="80%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="ti ti-apps"></i> Frameworks & Technologies</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-brand-windows"></i> .NET Framework</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-versions"></i> Crystal Reports</span>
+                            <span class="skill-name"><i class="ti ti-brand-windows"></i> WinForms</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-database"></i> SQL Server</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="85%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="ti ti-tool"></i> Tools & Other Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-brand-git"></i> Git</span>
                             <span class="skill-percentage">75%</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="skill-progress-bar" data-percentage="75"></div>
+                            <div class="skill-progress-bar" data-width="75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-versions"></i> OOP</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-3d-cube-sphere"></i> Problem Solving</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="90%"></div>
                         </div>
                     </div>
                 </div>
@@ -1113,102 +1170,101 @@
     <section id="projects" class="section-padding">
         <div class="container">
             <div class="section-title">
-                <h2><i class="ti ti-apps"></i> Featured Projects</h2>
+                <h2><i class="ti ti-apps"></i> My Projects</h2>
             </div>
             <div class="projects-container">
-                <!-- DVLD Project -->
                 <div class="project-card">
                     <div class="project-header">
-                        <h3>DVLD - Driving License Management System</h3>
+                        <h3>POS System</h3>
                     </div>
                     <div class="project-body">
-                        <p>A comprehensive system for managing driver licenses, tests, applications, and international driving permits.</p>
+                        <h3><i class="ti ti-shopping-cart"></i> Point of Sale System</h3>
+                        <p>A complete POS system for managing sales, inventory, customers, and suppliers with comprehensive reporting capabilities.</p>
                         <ul class="project-features">
-                            <li><i class="ti ti-check"></i> Multi-layer architecture with centralized data access</li>
-                            <li><i class="ti ti-check"></i> User management with role-based permissions</li>
-                            <li><i class="ti ti-check"></i> License application and renewal workflows</li>
-                            <li><i class="ti ti-check"></i> International driving permit processing</li>
-                            <li><i class="ti ti-check"></i> Comprehensive reporting with Crystal Reports</li>
+                            <li><i class="ti ti-check"></i> Sales & Inventory Management</li>
+                            <li><i class="ti ti-check"></i> Customer & Supplier Management</li>
+                            <li><i class="ti ti-check"></i> Comprehensive Reports</li>
+                            <li><i class="ti ti-check"></i> User Management & Permissions</li>
                         </ul>
                         <div class="project-links">
-                            <a href="https://youtu.be/uLdCdyXtdwI?feature=shared" target="_blank"><i class="ti ti-brand-youtube"></i> Demo</a>
-                            <a href="https://github.com/Marrwan03/DVLD-Version1.1" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+                            <a href="https://github.com/marwan-alawlaqi/POS-System" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
+                            <a href="https://drive.google.com/file/d/1cQy9HhT9Qfu4I48EGZIqV_68t57dlYd9/view?usp=sharing" target="_blank"><i class="ti ti-photo"></i> Screenshots</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Backup-Service Project -->
+                
                 <div class="project-card">
                     <div class="project-header">
-                        <h3>Backup-Service - Database Backup Utility</h3>
+                        <h3>Restaurant Management</h3>
                     </div>
                     <div class="project-body">
-                        <p>A Windows service application for automated database backup and restoration with scheduling capabilities.</p>
+                        <h3><i class="ti ti-tools-kitchen-2"></i> Restaurant Management System</h3>
+                        <p>A comprehensive system for managing restaurant operations including tables, orders, menus, and kitchen workflows.</p>
                         <ul class="project-features">
-                            <li><i class="ti ti-check"></i> Automated backup scheduling</li>
-                            <li><i class="ti ti-check"></i> Multiple database support</li>
-                            <li><i class="ti ti-check"></i> Compression and encryption options</li>
-                            <li><i class="ti ti-check"></i> Email notifications for backup status</li>
-                            <li><i class="ti ti-check"></i> Easy restoration process</li>
+                            <li><i class="ti ti-check"></i> Table & Order Management</li>
+                            <li><i class="ti ti-check"></i> Menu & Category Management</li>
+                            <li><i class="ti ti-check"></i> Kitchen Order Tracking</li>
+                            <li><i class="ti ti-check"></i> Sales Reports & Analytics</li>
                         </ul>
                         <div class="project-links">
-                            <a href="https://youtu.be/Iwdep2kdi0s?feature=shared" target="_blank"><i class="ti ti-brand-youtube"></i> Demo</a>
-                            <a href="https://github.com/Marrwan03/Database-Backup" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+                            <a href="https://github.com/marwan-alawlaqi/Restaurant-Management-System" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
+                            <a href="https://drive.google.com/file/d/1cT-XXLKLYihDtXHu1WkXDCY3EGfYCiGH/view?usp=sharing" target="_blank"><i class="ti ti-photo"></i> Screenshots</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- File-Monitoring Project -->
+                
                 <div class="project-card">
                     <div class="project-header">
-                        <h3>File-Monitoring - Windows Service</h3>
+                        <h3>Library Management</h3>
                     </div>
                     <div class="project-body">
-                        <p>A Windows service that monitors directories for file changes and performs automated actions.</p>
+                        <h3><i class="ti ti-book"></i> Library Management System</h3>
+                        <p>A complete system for managing library operations including books, members, borrowing, and returns with fine calculations.</p>
                         <ul class="project-features">
-                            <li><i class="ti ti-check"></i> Real-time file system monitoring</li>
-                            <li><i class="ti ti-check"></i> Configurable watch directories</li>
-                            <li><i class="ti ti-check"></i> Event logging and notifications</li>
-                            <li><i class="ti ti-check"></i> Customizable actions for file events</li>
-                            <li><i class="ti ti-check"></i> Low resource consumption</li>
+                            <li><i class="ti ti-check"></i> Book & Member Management</li>
+                            <li><i class="ti ti-check"></i> Borrowing & Return System</li>
+                            <li><i class="ti ti-check"></i> Fine Calculation</li>
+                            <li><i class="ti ti-check"></i> Search & Reporting</li>
                         </ul>
                         <div class="project-links">
-                            <a href="https://youtu.be/QLLA7U1FuvA?feature=shared" target="_blank"><i class="ti ti-brand-youtube"></i> Demo</a>
-                            <a href="https://github.com/Marrwan03/File-Monitoring-Windows-Service" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+                            <a href="https://github.com/marwan-alawlaqi/Library-Management-System" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
+                            <a href="#"><i class="ti ti-photo"></i> Screenshots</a>
                         </div>
                     </div>
                 </div>
             </div>
-
+            
             <div class="more-projects">
-                <h3>Want to see more projects?</h3>
-                <p>Check out my GitHub and YouTube channels for more of my work and tutorials.</p>
+                <h3><i class="ti ti-apps"></i> More Projects</h3>
+                <p>Check out my GitHub profile to see more of my projects and contributions.</p>
                 <div class="more-projects-links">
-                    <a href="https://github.com/Marrwan03" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
-                    <a href="https://youtube.com/@marwanal-awlaki?feature=shared" target="_blank"><i class="ti ti-brand-youtube"></i> YouTube</a>
+                    <a href="https://github.com/marwan-alawlaqi" target="_blank"><i class="ti ti-brand-github"></i> GitHub Profile</a>
+                    <a href="https://drive.google.com/drive/folders/1cQy9HhT9Qfu4I48EGZIqV_68t57dlYd9?usp=sharing" target="_blank"><i class="ti ti-folder"></i> Project Screenshots</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-padding" style="background-color: rgba(255, 255, 255, 0.5);">
+    <section id="contact" class="section-padding" style="background: rgba(255, 255, 255, 0.05);">
         <div class="container">
             <div class="section-title">
-                <h2><i class="ti ti-mail"></i> Get In Touch</h2>
+                <h2><i class="ti ti-mail"></i> Contact Me</h2>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3><i class="ti ti-info-circle"></i> Contact Information</h3>
+                    <h3><i class="ti ti-headset"></i> Let's Connect</h3>
                     <div class="contact-details">
-                        <p><i class="ti ti-mail"></i> Email: MarwanAlawlaki2@gmail.com</p>
-                        <p><i class="ti ti-phone"></i> Phone: +966 50 765 2943</p>
-                        <p><i class="ti ti-map-pin"></i> Address: Najran, Saudi Arabia</p>
+                        <p><i class="ti ti-mail"></i> marwan.alawlaqi@gmail.com</p>
+                        <p><i class="ti ti-brand-whatsapp"></i> +967 776 082 478</p>
+                        <p><i class="ti ti-map-pin"></i> Yemen, Hadramout, Mukalla</p>
                     </div>
                     <div class="social-links">
-                        <a href="https://youtube.com/@marwanal-awlaki?feature=shared" target="_blank"><i class="ti ti-brand-youtube"></i></a>
-                        <a href="https://github.com/Marrwan03" target="_blank"><i class="ti ti-brand-github"></i></a>
-                        <a href="https://www.linkedin.com/in/marwan-alawlaqi-0890192b5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="ti ti-brand-linkedin"></i></a>
+                        <a href="https://github.com/marwan-alawlaqi" target="_blank" aria-label="GitHub"><i class="ti ti-brand-github"></i></a>
+                        <a href="https://www.linkedin.com/in/marwan-al-awlaqi-2a3a5b2b3/" target="_blank" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100094574844679" target="_blank" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+                        <a href="https://www.instagram.com/marwan_alawlaqi/" target="_blank" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+                        <a href="https://twitter.com/MarwanAlawlaqi" target="_blank" aria-label="Twitter"><i class="ti ti-brand-twitter"></i></a>
                     </div>
                 </div>
             </div>
@@ -1218,62 +1274,63 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2025 Marwan Al-Awlaqi. All rights reserved.</p>
+            <p>&copy; 2023 Marwan Al-Awlaqi. All rights reserved.</p>
+            <p>Made with <i class="ti ti-heart" style="color: var(--accent-pink);"></i> using HTML, CSS and JavaScript</p>
         </div>
     </footer>
 
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
-    <!-- JavaScript -->
     <script>
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const body = document.body;
-
+        
         // Check for saved theme preference or respect OS preference
         const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
         if (savedTheme === 'dark') {
             body.setAttribute('data-theme', 'dark');
-            themeIcon.classList.replace('ti-sun', 'ti-moon');
+            themeIcon.classList.remove('ti-sun');
+            themeIcon.classList.add('ti-moon');
         }
-
+        
         themeToggle.addEventListener('click', () => {
             if (body.getAttribute('data-theme') === 'dark') {
                 body.removeAttribute('data-theme');
-                themeIcon.classList.replace('ti-moon', 'ti-sun');
+                themeIcon.classList.remove('ti-moon');
+                themeIcon.classList.add('ti-sun');
                 localStorage.setItem('theme', 'light');
             } else {
                 body.setAttribute('data-theme', 'dark');
-                themeIcon.classList.replace('ti-sun', 'ti-moon');
+                themeIcon.classList.remove('ti-sun');
+                themeIcon.classList.add('ti-moon');
                 localStorage.setItem('theme', 'dark');
             }
         });
-
+        
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.querySelector('.nav-links');
-
+        
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            menuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
         });
-
+        
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
-
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
+                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
                 
@@ -1286,25 +1343,8 @@
                 }
             });
         });
-
-        // Animate skill bars when they come into view
-        const skillBars = document.querySelectorAll('.skill-progress-bar');
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const percentage = entry.target.getAttribute('data-percentage');
-                    entry.target.style.width = `${percentage}%`;
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        skillBars.forEach(bar => {
-            observer.observe(bar);
-        });
-
-        // Profile image slider
+        // Image slider functionality
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         
@@ -1320,7 +1360,23 @@
         
         // Auto-advance slides every 5 seconds
         setInterval(nextSlide, 5000);
-
+        
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress-bar');
+        
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    bar.style.width = bar.getAttribute('data-width');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateSkillBars);
+        // Initial check on page load
+        animateSkillBars();
+        
         // Show toast notification
         function showToast(message) {
             const toast = document.getElementById('toast');
@@ -1331,24 +1387,32 @@
                 toast.classList.remove('show');
             }, 3000);
         }
-
+        
         // CV download tracking
         document.querySelector('a[download]').addEventListener('click', () => {
             showToast('Downloading CV...');
         });
-
-        // Initialize animations on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            // Animate hero section
-            const heroContent = document.querySelector('.hero-content');
-            heroContent.style.opacity = '0';
-            heroContent.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                heroContent.style.transition = 'opacity 1s ease, transform 1s ease';
-                heroContent.style.opacity = '1';
-                heroContent.style.transform = 'translateY(0)';
-            }, 300);
+        
+        // Add animation on scroll for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section-padding').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(section);
         });
     </script>
 </body>
