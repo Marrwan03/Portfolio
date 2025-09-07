@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marwan Al-Awlaqi | .NET Desktop Developer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <style>
+<style>
         :root {
             --light-bg: #DCD9DE;
             --dark-text: #3F3433;
@@ -28,6 +19,32 @@
             --card-bg: rgba(49, 43, 68, 0.8);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             --nav-bg: rgba(49, 43, 68, 0.95);
+        }
+
+        /* حل مشكلة Dark Reader */
+        html[data-darkreader-mode="dynamic"] {
+            --darkreader-bg--dark-text: #F0E6EF !important;
+            --darkreader-text--dark-text: #F0E6EF !important;
+        }
+        
+        html[data-darkreader-mode="dynamic"] .section-title h2,
+        html[data-darkreader-mode="dynamic"] .hero h1,
+        html[data-darkreader-mode="dynamic"] .hero p,
+        html[data-darkreader-mode="dynamic"] .about-text h3,
+        html[data-darkreader-mode="dynamic"] .info-item h4,
+        html[data-darkreader-mode="dynamic"] .info-item p,
+        html[data-darkreader-mode="dynamic"] .skill-category h3,
+        html[data-darkreader-mode="dynamic"] .skill-name,
+        html[data-darkreader-mode="dynamic"] .skill-percentage,
+        html[data-darkreader-mode="dynamic"] .project-header h3,
+        html[data-darkreader-mode="dynamic"] .project-body h3,
+        html[data-darkreader-mode="dynamic"] .project-body p,
+        html[data-darkreader-mode="dynamic"] .project-features li,
+        html[data-darkreader-mode="dynamic"] .contact-info h3,
+        html[data-darkreader-mode="dynamic"] .contact-details p,
+        html[data-darkreader-mode="dynamic"] .more-projects h3,
+        html[data-darkreader-mode="dynamic"] .more-projects p {
+            color: var(--dark-text) !important;
         }
 
         * {
@@ -189,6 +206,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: var(--dark-text) !important; /* إضافة مهمة */
         }
 
         .nav-links a::after {
@@ -371,6 +389,7 @@
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            color: var(--dark-text);
         }
 
         .hero-buttons {
@@ -406,6 +425,7 @@
         .about-text p {
             margin-bottom: 1.5rem;
             opacity: 0.8;
+            color: var(--dark-text);
         }
 
         .info-grid {
@@ -444,11 +464,13 @@
         .info-item h4 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            color: var(--dark-text);
         }
 
         .info-item p {
             opacity: 0.7;
             margin-bottom: 0;
+            color: var(--dark-text);
         }
 
         .platform-link {
@@ -523,6 +545,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: var(--dark-text);
         }
 
         .skill-percentage {
@@ -627,6 +650,7 @@
         .project-body p {
             opacity: 0.8;
             margin-bottom: 1.5rem;
+            color: var(--dark-text);
         }
 
         .project-features {
@@ -639,6 +663,7 @@
             align-items: center;
             gap: 0.5rem;
             opacity: 0.9;
+            color: var(--dark-text);
         }
 
         .project-features i {
@@ -690,6 +715,7 @@
         .more-projects p {
             margin-bottom: 1.5rem;
             opacity: 0.8;
+            color: var(--dark-text);
         }
 
         .more-projects-links {
@@ -764,6 +790,7 @@
             gap: 1rem;
             opacity: 0.9;
             font-size: 1.1rem;
+            color: var(--dark-text);
         }
 
         .social-links {
@@ -807,6 +834,10 @@
 
         [data-theme="dark"] footer {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: var(--dark-text);
         }
 
         /* Toast notification */
