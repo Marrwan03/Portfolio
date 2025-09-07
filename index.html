@@ -16,21 +16,31 @@
             --accent-teal: #7A9EB1;
             --accent-pink: #C46D82;
             --transition: all 0.3s ease;
-            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.95);
             --shadow: 0 10px 30px rgba(63, 52, 51, 0.1);
-            --nav-bg: rgba(255, 255, 255, 0.95);
+            --nav-bg: rgba(255, 255, 255, 0.98);
         }
 
-        /* Dark Mode Variables - IMPROVED */
+        /* Dark Mode Variables */
         [data-theme="dark"] {
-            --light-bg: #1E1B26;
+            --light-bg: #2A2438;
             --dark-text: #F0E6EF;
-            --card-bg: rgba(39, 35, 51, 0.95);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            --nav-bg: rgba(39, 35, 51, 0.98);
-            --accent-primary: #B87BA0;
-            --accent-secondary: #C8A8A8;
-            --accent-teal: #8CB4CC;
+            --card-bg: rgba(49, 43, 68, 0.95);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --nav-bg: rgba(49, 43, 68, 0.98);
+            --accent-primary: #C46D82;
+            --accent-teal: #7A9EB1;
+        }
+
+        /* تعزيز التوافق مع Dark Reader */
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --light-bg: #2A2438;
+                --dark-text: #F0E6EF;
+                --card-bg: rgba(49, 43, 68, 0.95);
+                --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                --nav-bg: rgba(49, 43, 68, 0.98);
+            }
         }
 
         * {
@@ -54,9 +64,9 @@
 
         [data-theme="dark"] body {
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(184, 123, 160, 0.15) 0%, transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(200, 168, 168, 0.15) 0%, transparent 25%),
-                radial-gradient(circle at 50% 80%, rgba(140, 180, 204, 0.15) 0%, transparent 25%);
+                radial-gradient(circle at 15% 50%, rgba(138, 90, 122, 0.2) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(166, 138, 138, 0.2) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(122, 158, 177, 0.2) 0%, transparent 25%);
         }
 
         a {
@@ -145,7 +155,7 @@
             color: white;
         }
 
-        /* Navigation - IMPROVED FOR DARK MODE */
+        /* Navigation - تم تحسينه لمنع التداخل مع Dark Reader */
         nav {
             background-color: var(--nav-bg);
             box-shadow: 0 2px 10px rgba(63, 52, 51, 0.1);
@@ -178,6 +188,7 @@
             align-items: center;
             gap: 0.5rem;
             cursor: pointer;
+            z-index: 1001; /* تأكد من ظهوره فوق العناصر الأخرى */
         }
 
         .nav-links {
@@ -196,7 +207,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--dark-text) !important; /* Force text color */
+            color: var(--dark-text) !important; /* إجبار اللون لمنع Dark Reader من تغييره */
         }
 
         .nav-links a::after {
@@ -222,6 +233,7 @@
             cursor: pointer;
             margin-left: 1.5rem;
             transition: var(--transition);
+            z-index: 1001; /* تأكد من ظهوره فوق العناصر الأخرى */
         }
 
         .theme-toggle:hover {
@@ -235,9 +247,10 @@
             color: var(--dark-text);
             background: none;
             border: none;
+            z-index: 1001; /* تأكد من ظهوره فوق العناصر الأخرى */
         }
 
-        /* Hero Section - Updated for Slider */
+        /* Hero Section */
         .hero {
             padding: 10rem 0 5rem;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(220, 217, 222, 0.9));
@@ -247,7 +260,7 @@
         }
 
         [data-theme="dark"] .hero {
-            background: linear-gradient(135deg, rgba(39, 35, 51, 0.9), rgba(30, 27, 38, 0.9));
+            background: linear-gradient(135deg, rgba(49, 43, 68, 0.9), rgba(42, 36, 56, 0.9));
         }
 
         .hero::before {
@@ -262,7 +275,7 @@
         }
 
         [data-theme="dark"] .hero::before {
-            background: radial-gradient(circle, rgba(184, 123, 160, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(138, 90, 122, 0.2) 0%, transparent 70%);
         }
 
         @keyframes pulse {
@@ -318,10 +331,6 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-radius: 20px;
-        }
-
-        [data-theme="dark"] .hero-img {
-            border: 4px solid rgba(184, 123, 160, 0.4);
         }
 
         .profile-slider::before {
@@ -383,7 +392,6 @@
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
-            color: var(--dark-text);
         }
 
         .hero-buttons {
@@ -419,7 +427,6 @@
         .about-text p {
             margin-bottom: 1.5rem;
             opacity: 0.8;
-            color: var(--dark-text);
         }
 
         .info-grid {
@@ -437,7 +444,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
-            color: var(--dark-text);
         }
 
         .info-item:hover {
@@ -450,10 +456,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        [data-theme="dark"] .info-item:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
-
         .info-item i {
             font-size: 2.5rem;
             color: var(--accent-primary);
@@ -463,13 +465,11 @@
         .info-item h4 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: var(--dark-text);
         }
 
         .info-item p {
             opacity: 0.7;
             margin-bottom: 0;
-            color: var(--dark-text);
         }
 
         .platform-link {
@@ -503,7 +503,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
-            color: var(--dark-text);
         }
 
         [data-theme="dark"] .skill-category {
@@ -514,10 +513,6 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(63, 52, 51, 0.15);
             border-color: var(--accent-secondary);
-        }
-
-        [data-theme="dark"] .skill-category:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .skill-category h3 {
@@ -549,7 +544,6 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--dark-text);
         }
 
         .skill-percentage {
@@ -612,7 +606,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
-            color: var(--dark-text);
         }
 
         [data-theme="dark"] .project-card {
@@ -623,10 +616,6 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(63, 52, 51, 0.15);
             border-color: var(--accent-primary);
-        }
-
-        [data-theme="dark"] .project-card:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .project-header {
@@ -659,7 +648,6 @@
         .project-body p {
             opacity: 0.8;
             margin-bottom: 1.5rem;
-            color: var(--dark-text);
         }
 
         .project-features {
@@ -672,7 +660,6 @@
             align-items: center;
             gap: 0.5rem;
             opacity: 0.9;
-            color: var(--dark-text);
         }
 
         .project-features i {
@@ -701,14 +688,6 @@
             transform: translateY(-2px);
         }
 
-        [data-theme="dark"] .project-links a {
-            background: rgba(184, 123, 160, 0.15);
-        }
-
-        [data-theme="dark"] .project-links a:hover {
-            background: rgba(184, 123, 160, 0.25);
-        }
-
         .more-projects {
             text-align: center;
             margin-top: 3rem;
@@ -718,7 +697,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
-            color: var(--dark-text);
         }
 
         [data-theme="dark"] .more-projects {
@@ -733,7 +711,6 @@
         .more-projects p {
             margin-bottom: 1.5rem;
             opacity: 0.8;
-            color: var(--dark-text);
         }
 
         .more-projects-links {
@@ -774,7 +751,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
-            color: var(--dark-text);
         }
 
         [data-theme="dark"] .contact-info {
@@ -809,7 +785,6 @@
             gap: 1rem;
             opacity: 0.9;
             font-size: 1.1rem;
-            color: var(--dark-text);
         }
 
         .social-links {
@@ -830,7 +805,6 @@
             transition: var(--transition);
             box-shadow: var(--shadow);
             font-size: 1.5rem;
-            color: var(--dark-text);
         }
 
         [data-theme="dark"] .social-links a {
@@ -850,7 +824,6 @@
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            color: var(--dark-text);
         }
 
         [data-theme="dark"] footer {
@@ -876,18 +849,6 @@
         .toast.show {
             transform: translateY(0);
             opacity: 1;
-        }
-
-        /* Force text visibility in dark mode */
-        [data-theme="dark"] .nav-links a,
-        [data-theme="dark"] .about-text p,
-        [data-theme="dark"] .info-item,
-        [data-theme="dark"] .skill-category,
-        [data-theme="dark"] .project-body p,
-        [data-theme="dark"] .project-features li,
-        [data-theme="dark"] .more-projects p,
-        [data-theme="dark"] .contact-details p {
-            color: var(--dark-text) !important;
         }
 
         /* Responsive Design */
@@ -921,10 +882,6 @@
                 text-align: center;
                 backdrop-filter: blur(10px);
                 z-index: 999;
-            }
-            
-            [data-theme="dark"] .nav-links {
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
             }
             
             .nav-links.active {
@@ -1064,101 +1021,99 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section-padding" style="background: rgba(255, 255, 255, 0.05);">
+    <section id="skills" class="section-padding" style="background-color: rgba(255, 255, 255, 0.5);">
         <div class="container">
             <div class="section-title">
-                <h2><i class="ti ti-tools"></i> My Skills</h2>
+                <h2><i class="ti ti-tools"></i> Technical Skills</h2>
             </div>
             <div class="skills-container">
                 <div class="skill-category">
                     <h3><i class="ti ti-code"></i> Programming Languages</h3>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-brand-c-sharp"></i> C#</span>
+                            <span class="skill-name"><i class="ti ti-brand-csharp"></i> C#</span>
                             <span class="skill-percentage">90%</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="90%"></div>
+                            <div class="skill-progress-bar" data-percentage="90"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-database"></i> SQL</span>
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-brand-html5"></i> HTML/CSS</span>
-                            <span class="skill-percentage">80%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="80%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="ti ti-apps"></i> Frameworks & Technologies</h3>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-brand-windows"></i> .NET Framework</span>
-                            <span class="skill-percentage">90%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-brand-windows"></i> WinForms</span>
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-database"></i> SQL Server</span>
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="85%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="ti ti-tool"></i> Tools & Other Skills</h3>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-brand-git"></i> Git</span>
+                            <span class="skill-name"><i class="ti ti-brand-cpp"></i> C++</span>
                             <span class="skill-percentage">75%</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="75%"></div>
+                            <div class="skill-progress-bar" data-percentage="75"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-versions"></i> OOP</span>
+                            <span class="skill-name"><i class="ti ti-database"></i> T-SQL</span>
                             <span class="skill-percentage">85%</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="85%"></div>
+                            <div class="skill-progress-bar" data-percentage="85"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="ti ti-layer"></i> Frameworks & Technologies</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-brand-windows"></i> .NET Framework</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="85"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <span class="skill-name"><i class="ti ti-3d-cube-sphere"></i> Problem Solving</span>
+                            <span class="skill-name"><i class="ti ti-database"></i> ADO.NET</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-window"></i> Windows Forms</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="95"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="ti ti-server"></i> Database Management</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-brand-microsoft"></i> SQL Server</span>
                             <span class="skill-percentage">90%</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="90%"></div>
+                            <div class="skill-progress-bar" data-percentage="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-sitemap"></i> Database Design</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="ti ti-settings"></i> Query Optimization</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-percentage="80"></div>
                         </div>
                     </div>
                 </div>
@@ -1170,7 +1125,7 @@
     <section id="projects" class="section-padding">
         <div class="container">
             <div class="section-title">
-                <h2><i class="ti ti-apps"></i> My Projects</h2>
+                <h2><i class="ti ti-apps"></i> Featured Projects</h2>
             </div>
             <div class="projects-container">
                 <div class="project-card">
@@ -1179,92 +1134,88 @@
                     </div>
                     <div class="project-body">
                         <h3><i class="ti ti-shopping-cart"></i> Point of Sale System</h3>
-                        <p>A complete POS system for managing sales, inventory, customers, and suppliers with comprehensive reporting capabilities.</p>
+                        <p>A complete Point of Sale system for managing sales, inventory, and customer data with comprehensive reporting features.</p>
                         <ul class="project-features">
-                            <li><i class="ti ti-check"></i> Sales & Inventory Management</li>
-                            <li><i class="ti ti-check"></i> Customer & Supplier Management</li>
-                            <li><i class="ti ti-check"></i> Comprehensive Reports</li>
-                            <li><i class="ti ti-check"></i> User Management & Permissions</li>
+                            <li><i class="ti ti-check"></i> Inventory Management</li>
+                            <li><i class="ti ti-check"></i> Sales Tracking</li>
+                            <li><i class="ti ti-check"></i> Customer Management</li>
+                            <li><i class="ti ti-check"></i> Reporting System</li>
                         </ul>
                         <div class="project-links">
-                            <a href="https://github.com/marwan-alawlaqi/POS-System" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
-                            <a href="https://drive.google.com/file/d/1cQy9HhT9Qfu4I48EGZIqV_68t57dlYd9/view?usp=sharing" target="_blank"><i class="ti ti-photo"></i> Screenshots</a>
+                            <a href="#"><i class="ti ti-brand-github"></i> Source Code</a>
+                            <a href="#"><i class="ti ti-external-link"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Restaurant Management</h3>
-                    </div>
-                    <div class="project-body">
-                        <h3><i class="ti ti-tools-kitchen-2"></i> Restaurant Management System</h3>
-                        <p>A comprehensive system for managing restaurant operations including tables, orders, menus, and kitchen workflows.</p>
-                        <ul class="project-features">
-                            <li><i class="ti ti-check"></i> Table & Order Management</li>
-                            <li><i class="ti ti-check"></i> Menu & Category Management</li>
-                            <li><i class="ti ti-check"></i> Kitchen Order Tracking</li>
-                            <li><i class="ti ti-check"></i> Sales Reports & Analytics</li>
-                        </ul>
-                        <div class="project-links">
-                            <a href="https://github.com/marwan-alawlaqi/Restaurant-Management-System" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
-                            <a href="https://drive.google.com/file/d/1cT-XXLKLYihDtXHu1WkXDCY3EGfYCiGH/view?usp=sharing" target="_blank"><i class="ti ti-photo"></i> Screenshots</a>
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Library Management</h3>
                     </div>
                     <div class="project-body">
                         <h3><i class="ti ti-book"></i> Library Management System</h3>
-                        <p>A complete system for managing library operations including books, members, borrowing, and returns with fine calculations.</p>
+                        <p>A comprehensive system for managing library operations including book tracking, member management, and borrowing processes.</p>
                         <ul class="project-features">
-                            <li><i class="ti ti-check"></i> Book & Member Management</li>
-                            <li><i class="ti ti-check"></i> Borrowing & Return System</li>
-                            <li><i class="ti ti-check"></i> Fine Calculation</li>
-                            <li><i class="ti ti-check"></i> Search & Reporting</li>
+                            <li><i class="ti ti-check"></i> Book Catalog Management</li>
+                            <li><i class="ti ti-check"></i> Member Management</li>
+                            <li><i class="ti ti-check"></i> Borrow/Return Tracking</li>
+                            <li><i class="ti ti-check"></i> Late Fee Calculation</li>
                         </ul>
                         <div class="project-links">
-                            <a href="https://github.com/marwan-alawlaqi/Library-Management-System" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
-                            <a href="#"><i class="ti ti-photo"></i> Screenshots</a>
+                            <a href="#"><i class="ti ti-brand-github"></i> Source Code</a>
+                            <a href="#"><i class="ti ti-external-link"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Hotel Management</h3>
+                    </div>
+                    <div class="project-body">
+                        <h3><i class="ti ti-building"></i> Hotel Management System</h3>
+                        <p>A complete solution for hotel operations including room booking, guest management, billing, and housekeeping coordination.</p>
+                        <ul class="project-features">
+                            <li><i class="ti ti-check"></i> Room Booking System</li>
+                            <li><i class="ti ti-check"></i> Guest Management</li>
+                            <li><i class="ti ti-check"></i> Billing & Invoicing</li>
+                            <li><i class="ti ti-check"></i> Housekeeping Management</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#"><i class="ti ti-brand-github"></i> Source Code</a>
+                            <a href="#"><i class="ti ti-external-link"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <div class="more-projects">
                 <h3><i class="ti ti-apps"></i> More Projects</h3>
-                <p>Check out my GitHub profile to see more of my projects and contributions.</p>
+                <p>Check out my other projects and code repositories on these platforms:</p>
                 <div class="more-projects-links">
-                    <a href="https://github.com/marwan-alawlaqi" target="_blank"><i class="ti ti-brand-github"></i> GitHub Profile</a>
-                    <a href="https://drive.google.com/drive/folders/1cQy9HhT9Qfu4I48EGZIqV_68t57dlYd9?usp=sharing" target="_blank"><i class="ti ti-folder"></i> Project Screenshots</a>
+                    <a href="https://github.com/MarwanAlawlaqi" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
+                    <a href="https://programmingadvices.com/" target="_blank"><i class="ti ti-code"></i> Programming Advices</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-padding" style="background: rgba(255, 255, 255, 0.05);">
+    <section id="contact" class="section-padding" style="background-color: rgba(255, 255, 255, 0.5);">
         <div class="container">
             <div class="section-title">
-                <h2><i class="ti ti-mail"></i> Contact Me</h2>
+                <h2><i class="ti ti-mail"></i> Get In Touch</h2>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3><i class="ti ti-headset"></i> Let's Connect</h3>
+                    <h3><i class="ti ti-mail-forward"></i> Contact Information</h3>
                     <div class="contact-details">
                         <p><i class="ti ti-mail"></i> marwan.alawlaqi@gmail.com</p>
-                        <p><i class="ti ti-brand-whatsapp"></i> +967 776 082 478</p>
+                        <p><i class="ti ti-brand-whatsapp"></i> +967 776 246 678</p>
                         <p><i class="ti ti-map-pin"></i> Yemen, Hadramout, Mukalla</p>
                     </div>
                     <div class="social-links">
-                        <a href="https://github.com/marwan-alawlaqi" target="_blank" aria-label="GitHub"><i class="ti ti-brand-github"></i></a>
-                        <a href="https://www.linkedin.com/in/marwan-al-awlaqi-2a3a5b2b3/" target="_blank" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=100094574844679" target="_blank" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
-                        <a href="https://www.instagram.com/marwan_alawlaqi/" target="_blank" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
-                        <a href="https://twitter.com/MarwanAlawlaqi" target="_blank" aria-label="Twitter"><i class="ti ti-brand-twitter"></i></a>
+                        <a href="https://www.facebook.com/MarwanAlawlaqi/" target="_blank"><i class="ti ti-brand-facebook"></i></a>
+                        <a href="https://t.me/MarwanAlawlaqi" target="_blank"><i class="ti ti-brand-telegram"></i></a>
+                        <a href="https://wa.me/967776246678" target="_blank"><i class="ti ti-brand-whatsapp"></i></a>
+                        <a href="https://github.com/MarwanAlawlaqi" target="_blank"><i class="ti ti-brand-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -1275,7 +1226,6 @@
     <footer>
         <div class="container">
             <p>&copy; 2023 Marwan Al-Awlaqi. All rights reserved.</p>
-            <p>Made with <i class="ti ti-heart" style="color: var(--accent-pink);"></i> using HTML, CSS and JavaScript</p>
         </div>
     </footer>
 
@@ -1286,51 +1236,80 @@
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
-        const body = document.body;
-        
+        const html = document.documentElement;
+
         // Check for saved theme preference or respect OS preference
         const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
         if (savedTheme === 'dark') {
-            body.setAttribute('data-theme', 'dark');
-            themeIcon.classList.remove('ti-sun');
-            themeIcon.classList.add('ti-moon');
+            html.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('ti-sun', 'ti-moon');
         }
-        
+
         themeToggle.addEventListener('click', () => {
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                themeIcon.classList.remove('ti-moon');
-                themeIcon.classList.add('ti-sun');
+            const currentTheme = html.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                themeIcon.classList.replace('ti-moon', 'ti-sun');
                 localStorage.setItem('theme', 'light');
             } else {
-                body.setAttribute('data-theme', 'dark');
-                themeIcon.classList.remove('ti-sun');
-                themeIcon.classList.add('ti-moon');
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('ti-sun', 'ti-moon');
                 localStorage.setItem('theme', 'dark');
             }
         });
-        
+
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.querySelector('.nav-links');
-        
+
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            menuBtn.querySelector('i').classList.toggle('fa-bars');
+            menuBtn.querySelector('i').classList.toggle('fa-times');
         });
-        
+
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.remove('fa-times');
             });
         });
-        
+
+        // Image Slider
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Auto slide change
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+
+        // Initialize skills animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress-bar');
+            skillBars.forEach(bar => {
+                const percentage = bar.getAttribute('data-percentage');
+                bar.style.width = percentage + '%';
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
                 
@@ -1343,40 +1322,7 @@
                 }
             });
         });
-        
-        // Image slider functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[index].classList.add('active');
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        // Auto-advance slides every 5 seconds
-        setInterval(nextSlide, 5000);
-        
-        // Animate skill bars when they come into view
-        const skillBars = document.querySelectorAll('.skill-progress-bar');
-        
-        function animateSkillBars() {
-            skillBars.forEach(bar => {
-                const rect = bar.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    bar.style.width = bar.getAttribute('data-width');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', animateSkillBars);
-        // Initial check on page load
-        animateSkillBars();
-        
+
         // Show toast notification
         function showToast(message) {
             const toast = document.getElementById('toast');
@@ -1387,33 +1333,6 @@
                 toast.classList.remove('show');
             }, 3000);
         }
-        
-        // CV download tracking
-        document.querySelector('a[download]').addEventListener('click', () => {
-            showToast('Downloading CV...');
-        });
-        
-        // Add animation on scroll for sections
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.section-padding').forEach(section => {
-            section.style.opacity = 0;
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(section);
-        });
     </script>
 </body>
 </html>
